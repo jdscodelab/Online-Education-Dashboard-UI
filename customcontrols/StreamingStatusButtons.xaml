@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="OnlineEducation.customcontrols.StreamingStatusButtons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OnlineEducation.customcontrols"
+             mc:Ignorable="d" x:Name="this">
+    <Border x:Name="border" CornerRadius="10" MinHeight="34" Width="{Binding MinHeight, ElementName=border}" MinWidth="{Binding MinHeight, ElementName=border}"  RenderTransformOrigin="0.5,0.5">
+        <Border.Resources>
+            <local:RectangleHeight x:Key="BorderMinToRectangle" />
+        </Border.Resources>
+        <Border.Background>
+            <!--Linear gradient effect-->
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1" ScaleY="-1"/>
+                        <SkewTransform CenterY="0.5" CenterX="0.5" AngleX="0" AngleY="0"/>
+                        <RotateTransform Angle="-216.87" CenterX="0.5" CenterY="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FFF7542E" Offset="1"/>
+                <GradientStop Color="#FFFBAC9A"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Rectangle StrokeThickness="2" Stroke="White" RadiusX="8" RadiusY="8" Height="{Binding Converter={StaticResource BorderMinToRectangle}, ElementName=border, Path=MinHeight}" Width="{Binding Converter={StaticResource BorderMinToRectangle}, ElementName=border, Path=MinHeight}">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="{Binding ImageSource, ElementName=this}" Stretch="UniformToFill"/>
+            </Rectangle.Fill>
+        </Rectangle>
+    </Border>
+</UserControl>
